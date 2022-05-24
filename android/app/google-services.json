@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "299448300014",
+    "project_id": "chatia-59df1",
+    "storage_bucket": "chatia-59df1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:299448300014:android:c726afec76300d61bf9eff",
+        "android_client_info": {
+          "package_name": "com.TheBlackPearL.chatia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "299448300014-8kplcr2hqoj5mqnc7fjumahnvkmtbs1n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9zkwf0dVOdHAe_0qvLrNyyUdy1B59A1o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "299448300014-8kplcr2hqoj5mqnc7fjumahnvkmtbs1n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

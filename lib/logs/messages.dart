@@ -27,4 +27,23 @@ class Messages {
   static void setTheme(String text) {
     debugPrint("Set Theme --> ( " + text + " )");
   }
+  static void signIn(String email , String password , String api)
+  {
+    debugPrint("Sign In -----------> " + api);
+    debugPrint(email + "\n" + password + "\n" + "-------------------------------------------------------");
+  }
+  static void signUp(String email , String password , String api)
+  {
+    debugPrint("Sign Up -----------> " + api);
+    debugPrint(email + "\n" + password + "\n" + "-------------------------------------------------------");
+  }
+  static void noNetwork(String need)
+  {
+    debugPrint("No NETWORK");
+    debugPrint(need);
+  }
+  static void clear(String setting)
+  {
+    debugPrint("CLEARING ---------> " + setting);
+  }
 }
