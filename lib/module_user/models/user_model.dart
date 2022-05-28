@@ -1,8 +1,8 @@
-class User{
-  String? username , _email , _password;
+class User {
+  String? username, _email, _password;
   String? img;
 
-  User(this._email , this._password , {this.username, this.img});
+  User(this._email, this._password, {this.username, this.img});
 
   get password => _password;
 

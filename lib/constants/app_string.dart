@@ -10,5 +10,4 @@ class AppStrings {
   static String success = "success";
   static String noNet = "noNet";
   static String noData = "NO_DATA";
-
 }

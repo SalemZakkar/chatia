@@ -51,7 +51,9 @@ class _WelcomePageState extends State<WelcomePage> {
                 ),
               ),
             ),
-            const SizedBox(height: 10,),
+            const SizedBox(
+              height: 10,
+            ),
             InkWell(
               borderRadius: BorderRadius.circular(50),
               onTap: () {

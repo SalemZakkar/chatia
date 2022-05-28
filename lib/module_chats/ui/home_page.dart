@@ -19,13 +19,12 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             icon: Icon(Icons.settings),
-            onPressed: (){
-            Navigator.pushNamed(context, AppRouter.setting);
+            onPressed: () {
+              Navigator.pushNamed(context, AppRouter.setting);
             },
           )
         ],
       ),
-
     );
   }
 }

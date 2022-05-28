@@ -45,17 +45,17 @@ class _SignInPageState extends State<SignInPage> {
               SizedBox(
                 height: size.height * 0.2,
               ),
-               TextField(
+              TextField(
                 decoration: const InputDecoration(hintText: "Email"),
-                 controller: email,
+                controller: email,
               ),
               const SizedBox(
                 height: 20,
               ),
-               TextField(
-                 controller: password,
+              TextField(
+                controller: password,
                 decoration: const InputDecoration(hintText: "password"),
-                 obscureText: true,
+                obscureText: true,
               ),
               const SizedBox(
                 height: 20,
@@ -63,13 +63,11 @@ class _SignInPageState extends State<SignInPage> {
               InkWell(
                 borderRadius: BorderRadius.circular(15),
                 onTap: () async {
-                  if(ExceptionCases.checkUsername(email.text)){
+                  if (ExceptionCases.checkUsername(email.text)) {
                     PopMessages.showSnackBar(context, "Invalid Email");
-                  }
-                  else if(ExceptionCases.checkPassword(password.text)){
+                  } else if (ExceptionCases.checkPassword(password.text)) {
                     PopMessages.showSnackBar(context, "Invalid Password");
-                  }
-                  else{
+                  } else {
                     userCubit.signIn(User(email.text, password.text));
                   }
                 },
@@ -90,4 +88,5 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 }
+
 UserCubit userCubit = UserCubit(UserInitial());

@@ -18,38 +18,37 @@ class _SignInButtonState extends State<SignInButton> {
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
     return BlocProvider(
-      create: (context){
+      create: (context) {
+        userCubit = UserCubit(UserInitial());
         return userCubit;
       },
-      child: BlocBuilder<UserCubit , UserState>(
-        builder: (context , state)
-        {
-          if(state is UserLoading)
-            {
-              return const Loading(color: Colors.white,);
-            }
-          else if(state is UserDone)
-            {
-              WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-                Navigator.pushNamedAndRemoveUntil(context, AppRouter.home, (route) => false);
-
-              });
-              return Text(
-                "Sign In",
-                style: themeData.textTheme.bodyText1,
-              );
-            }
-          else if(state is UserError)
-            {
-              WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-                PopMessages.showSnackBar(context, state.message);
-              });
-              return Text(
-                "Sign In",
-                style: themeData.textTheme.bodyText1,
-              );
-            }
-          else{
+      child: BlocBuilder<UserCubit, UserState>(
+        builder: (context, state) {
+          // userCubit = UserCubit(UserInitial());
+          if (state is UserLoading) {
+            return const Loading(
+              color: Colors.white,
+            );
+          } else if (state is UserDone) {
+            WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+              userCubit.reset();
+              Navigator.pushNamedAndRemoveUntil(
+                  context, AppRouter.home, (route) => false);
+            });
+            return Text(
+              "Sign In",
+              style: themeData.textTheme.bodyText1,
+            );
+          } else if (state is UserError) {
+            WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+              PopMessages.showSnackBar(context, state.message);
+              userCubit.reset();
+            });
+            return Text(
+              "Sign In",
+              style: themeData.textTheme.bodyText1,
+            );
+          } else {
             return Text(
               "Sign In",
               style: themeData.textTheme.bodyText1,

@@ -11,6 +11,10 @@ part 'user_state.dart';
 
 class UserCubit extends Cubit<UserState> {
   UserCubit(UserState initialState) : super(initialState);
+  void reset() {
+    emit(UserInitial());
+  }
+
   void signUp(User user) async {
     emit(UserLoading());
     String rep = await UserRepository.signUp(user);

@@ -11,5 +11,3 @@ class ThemeManager {
     return themeStorage.getActiveTheme();
   }
 }
-
-

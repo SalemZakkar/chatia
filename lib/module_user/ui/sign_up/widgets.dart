@@ -17,47 +17,48 @@ class _SignUpButtonWidgetState extends State<SignUpButtonWidget> {
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
-    return BlocProvider(create: (context){
-      return userCubit;
-    },
-    child: BlocBuilder<UserCubit, UserState>
-      (builder: (context, state) {
-       if(state is UserInitial)
-         {
-           return Text(
-             "Sign Up",
-             style: themeData.textTheme.bodyText1,
-           );
-         }
-       else if(state is UserLoading)
-         {
-           return const Loading(color: Colors.white,);
-         }
-       else if(state is UserError){
-           WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-             PopMessages.showSnackBar(context, state.message);
-           });
+    return BlocProvider(
+      create: (context) {
+        userCubit = UserCubit(UserInitial());
+        return userCubit;
+      },
+      child: BlocBuilder<UserCubit, UserState>(builder: (context, state) {
+        if (state is UserInitial) {
           return Text(
-           "Sign Up",
-           style: themeData.textTheme.bodyText1,
-         );
-       }
-       else if(state is UserDone){
-         WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-           Navigator.pushNamedAndRemoveUntil(context, AppRouter.home, (route) => false);
-         });
-         return Text(
-           "Sign Up",
-           style: themeData.textTheme.bodyText1,
-         );
-       }
-       else{
-         return Text(
-           "Sign Up",
-           style: themeData.textTheme.bodyText1,
-         );
-       }
-    }),
+            "Sign Up",
+            style: themeData.textTheme.bodyText1,
+          );
+        } else if (state is UserLoading) {
+          return const Loading(
+            color: Colors.white,
+          );
+        } else if (state is UserError) {
+          WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+            userCubit.reset();
+            PopMessages.showSnackBar(context, state.message);
+          });
+          return Text(
+            "Sign Up",
+            style: themeData.textTheme.bodyText1,
+          );
+        } else if (state is UserDone) {
+          WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+            userCubit.reset();
+            Navigator.pushNamedAndRemoveUntil(
+                context, AppRouter.home, (route) => false);
+          });
+
+          return Text(
+            "Sign Up",
+            style: themeData.textTheme.bodyText1,
+          );
+        } else {
+          return Text(
+            "Sign Up",
+            style: themeData.textTheme.bodyText1,
+          );
+        }
+      }),
     );
   }
 }

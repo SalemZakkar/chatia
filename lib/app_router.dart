@@ -1,4 +1,3 @@
-
 import 'package:chatia/module_chats/ui/home_page.dart';
 import 'package:chatia/module_user/models/user_model.dart';
 import 'package:chatia/module_user/storage/UserStore.dart';
@@ -20,13 +19,12 @@ class AppRouter {
     UserStore userStore = UserStore();
     await userStore.init();
     User? user = userStore.getUser();
-    if(user == null) return welcome;
+    if (user == null) return welcome;
     return home;
   }
-  static Route? route(RouteSettings settings)
-  {
-    switch(settings.name)
-    {
+
+  static Route? route(RouteSettings settings) {
+    switch (settings.name) {
       case welcome:
         return MaterialPageRoute(builder: (context) => const WelcomePage());
       case signUp:
@@ -44,4 +42,5 @@ class AppRouter {
     }
   }
 }
+
 String? firstRoute;

@@ -96,7 +96,10 @@ class _SignUpPageState extends State<SignUpPage> {
                       PopMessages.showSnackBar(
                           context, "password are not same");
                     } else {
-                     userCubit.signUp(User(email.text, password.text , username: username.text) ,);
+                      userCubit.signUp(
+                        User(email.text, password.text,
+                            username: username.text),
+                      );
                     }
                   },
                   child: Container(
@@ -117,4 +120,5 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 }
+
 UserCubit userCubit = UserCubit(UserInitial());

@@ -8,6 +8,7 @@ class ThemeStorage {
     sharedPreferences = await SharedPreferences.getInstance();
     return true;
   }
+
   int getActiveTheme() {
     int? active = sharedPreferences.getInt(settingName);
     Messages.getSettingSharedPreferences(settingName, [active.toString()]);
@@ -18,7 +19,7 @@ class ThemeStorage {
   void setTheme(int i) {
     sharedPreferences.setInt(settingName, i);
     Messages.setSettingSharedPreference(settingName, [i.toString()]);
-
   }
 }
+
 ThemeStorage themeStorage = ThemeStorage();
