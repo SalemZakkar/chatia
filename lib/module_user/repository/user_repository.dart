@@ -45,8 +45,9 @@ class UserRepository {
     try {
       await UserApi.changePhoto(file);
       return AppStrings.success;
-    } on FirebaseException catch (err) {
-      return err.code;
+    } catch(err)
+    {
+      return err.toString();
     }
   }
 

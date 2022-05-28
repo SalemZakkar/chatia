@@ -42,7 +42,7 @@ class _SettingsPageState extends State<SettingsPage> {
               Container(
                   alignment: Alignment.center,
                   width: MediaQuery.of(context).size.width,
-                  height: 200,
+                  height: 280,
                   child: const ViewUserPhoto()),
               const SizedBox(
                 height: 30,

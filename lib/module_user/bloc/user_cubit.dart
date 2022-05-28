@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:chatia/constants/app_string.dart';
 import 'package:chatia/module_user/repository/user_repository.dart';
+import 'package:firebase_auth/firebase_auth.dart' as fb;
 import 'package:meta/meta.dart';
 
 import '../models/user_model.dart';
@@ -13,6 +14,10 @@ class UserCubit extends Cubit<UserState> {
   UserCubit(UserState initialState) : super(initialState);
   void reset() {
     emit(UserInitial());
+  }
+  void resetPhoto()
+  {
+    emit(UserInitialPhoto(fb.FirebaseAuth.instance.currentUser?.photoURL));
   }
 
   void signUp(User user) async {

@@ -4,8 +4,6 @@ import 'package:chatia/module_user/ui/settings/modal_widget.dart';
 import 'package:chatia/shared/error_network.dart';
 import 'package:chatia/shared/messages.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,21 +21,28 @@ UserCubit photoCubit =
     UserCubit(UserInitialPhoto(FirebaseAuth.instance.currentUser?.photoURL));
 
 class _ViewUserPhotoState extends State<ViewUserPhoto> {
+  bool pressable = true;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     ThemeData themeData = Theme.of(context);
     return InkWell(
-      borderRadius: BorderRadius.circular(15),
+      borderRadius: BorderRadius.circular(22),
       onTap: () {
-        showModalBottomSheet(
-            context: context, builder: (context) => const ModalWidget());
-      },
+        if(pressable)
+          {
+            showModalBottomSheet(
+                context: context, builder: (context) => const ModalWidget());
+             // pressable = false;
+
+          }
+      }
+      ,
       child: Container(
         alignment: Alignment.center,
         width: size.width * 0.7,
-        height: 190,
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
+        height: 300,
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(22)),
         child: BlocProvider<UserCubit>(
           create: (context) {
             photoCubit = UserCubit(
@@ -45,14 +50,24 @@ class _ViewUserPhotoState extends State<ViewUserPhoto> {
             return photoCubit;
           },
           child: BlocBuilder<UserCubit, UserState>(builder: (context, state) {
+            if(state is UserError)
+              {
+                WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+                  photoCubit.resetPhoto();
+                  PopMessages.showSnackBar(context, "No Network");
+                });
+              }
             if (state is UserInitialPhoto) {
+              pressable = true;
               return getPhoto(state.url);
             } else if (state is UserLoading) {
+              pressable = false;
               return const Center(
                 child: Loading(),
               );
             } else {
-              photoCubit.reset();
+              pressable = true;
+              photoCubit.resetPhoto();
               return getPhoto(FirebaseAuth.instance.currentUser?.photoURL);
             }
           }),

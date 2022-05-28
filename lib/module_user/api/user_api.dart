@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:chatia/module_user/models/user_model.dart' as model;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 
 class UserApi {
   static Future<dynamic> signIn(model.User user) async {
@@ -22,7 +23,11 @@ class UserApi {
     String ext = file.path.split(".").last;
     String uid = FirebaseAuth.instance.currentUser?.uid ?? "NO_ID";
     Reference ref = FirebaseStorage.instance.ref("/user/profile/" + uid);
-    TaskSnapshot uploadTask = await ref.putFile(file);
+    ref.storage.setMaxUploadRetryTime(const Duration(milliseconds: 1));
+    TaskSnapshot uploadTask = await ref.putFile(file).catchError((onError) {
+      ref = FirebaseStorage.instance.ref("/user/profile/" + uid);
+      return Future.value(true);
+    });
     await FirebaseAuth.instance.currentUser
         ?.updatePhotoURL(await uploadTask.ref.getDownloadURL());
   }
