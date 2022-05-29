@@ -1,8 +1,8 @@
 import 'package:chatia/app_router.dart';
 import 'package:chatia/module_user/bloc/user_cubit.dart';
-import 'package:chatia/module_user/storage/UserStore.dart';
-import 'package:chatia/module_user/ui/settings/dark_mode_switch.dart';
-import 'package:chatia/module_user/ui/settings/view_photo.dart';
+import 'package:chatia/module_user/storage/user_store.dart';
+import 'package:chatia/module_user/ui/settings/widgets/dark_mode_switch.dart';
+import 'package:chatia/module_user/ui/settings/widgets/view_photo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 

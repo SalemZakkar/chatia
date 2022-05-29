@@ -1,6 +1,5 @@
 import 'package:chatia/module_theme/bloc/theme_cubit.dart';
 import 'package:chatia/module_theme/model/theme_manager.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ThemeSwitchWidget extends StatefulWidget {

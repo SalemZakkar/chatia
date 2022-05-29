@@ -1,10 +1,7 @@
 import 'dart:io';
-
-import 'package:chatia/module_user/api/user_api.dart';
-import 'package:chatia/module_user/ui/settings/settings.dart';
-import 'package:chatia/module_user/ui/settings/view_photo.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:chatia/module_user/ui/settings/widgets/view_photo.dart';
 import 'package:flutter/material.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ModalWidget extends StatefulWidget {
@@ -32,11 +29,15 @@ class _ModalWidgetState extends State<ModalWidget> {
           ),
           InkWell(
             onTap: () async {
+              // ignore: invalid_use_of_visible_for_testing_member
               PickedFile? picked = await ImagePicker.platform
                   .pickImage(source: ImageSource.gallery);
               if (picked != null) {
-                File file = File(picked.path);
-                photoCubit.changePhoto(file);
+                File? file =
+                    await cropImage(File(picked.path), Theme.of(context));
+                if (file != null) {
+                  photoCubit.changePhoto(file);
+                }
                 Navigator.pop(context);
               }
             },
@@ -78,4 +79,27 @@ class _ModalWidgetState extends State<ModalWidget> {
       ),
     );
   }
+}
+
+Future<File?> cropImage(File file, ThemeData themeData) async {
+  CroppedFile? res = await ImageCropper.platform.cropImage(
+      sourcePath: file.path,
+      compressQuality: 50,
+      cropStyle: CropStyle.rectangle,
+      aspectRatioPresets: [
+        CropAspectRatioPreset.square
+      ],
+      uiSettings: [
+        AndroidUiSettings(
+            backgroundColor: themeData.scaffoldBackgroundColor,
+            cropFrameColor: Colors.yellow,
+            toolbarColor: themeData.cardColor,
+            toolbarWidgetColor: themeData.textTheme.subtitle1?.color,
+            activeControlsWidgetColor: themeData.primaryColor,
+            hideBottomControls: true)
+      ]);
+  if (res != null) {
+    return File(res.path);
+  }
+  return null;
 }

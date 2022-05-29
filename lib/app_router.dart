@@ -1,6 +1,6 @@
 import 'package:chatia/module_chats/ui/home_page.dart';
 import 'package:chatia/module_user/models/user_model.dart';
-import 'package:chatia/module_user/storage/UserStore.dart';
+import 'package:chatia/module_user/storage/user_store.dart';
 import 'package:chatia/module_user/ui/settings/settings.dart';
 import 'package:chatia/module_user/ui/sign_in/sign_in_page.dart';
 import 'package:chatia/module_user/ui/sign_up/sign_up_page.dart';

@@ -11,9 +11,7 @@ void startApp(BuildContext context) async {
       state == AppStrings.fireBaseUserNotFound) {
     Navigator.pushNamedAndRemoveUntil(
         context, AppRouter.welcome, (route) => false);
-  } else {
-    print('ssssssssssssssssss');
-  }
+  } else {}
 }
 
 class Splash extends StatefulWidget {

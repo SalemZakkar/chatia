@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:chatia/app_router.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +20,7 @@ class _HomePageState extends State<HomePage> {
         title: const Text("Chats"),
         actions: [
           IconButton(
-            icon: Icon(Icons.settings),
+            icon: const Icon(Icons.settings),
             onPressed: () {
               Navigator.pushNamed(context, AppRouter.setting);
             },

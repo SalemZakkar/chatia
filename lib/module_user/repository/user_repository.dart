@@ -1,10 +1,12 @@
+// ignore_for_file: unused_local_variable
+
 import 'dart:io';
 
 import 'package:chatia/constants/app_string.dart';
 import 'package:chatia/logs/messages.dart';
 import 'package:chatia/module_user/api/user_api.dart';
 import 'package:chatia/module_user/models/user_model.dart' as model;
-import 'package:chatia/module_user/storage/UserStore.dart';
+import 'package:chatia/module_user/storage/user_store.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class UserRepository {
@@ -18,7 +20,7 @@ class UserRepository {
       return AppStrings.success;
     } catch (e) {
       FirebaseAuthException firebaseAuthException = e as FirebaseAuthException;
-      return e.code;
+      return firebaseAuthException.code;
     }
   }
 
@@ -45,8 +47,7 @@ class UserRepository {
     try {
       await UserApi.changePhoto(file);
       return AppStrings.success;
-    } catch(err)
-    {
+    } catch (err) {
       return err.toString();
     }
   }

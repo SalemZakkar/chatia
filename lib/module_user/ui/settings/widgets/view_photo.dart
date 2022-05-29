@@ -1,14 +1,16 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:chatia/module_user/bloc/user_cubit.dart';
-import 'package:chatia/module_user/ui/settings/modal_widget.dart';
+import 'package:chatia/module_user/ui/settings/widgets/modal_widget.dart';
 import 'package:chatia/shared/error_network.dart';
 import 'package:chatia/shared/messages.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../constants/assets.dart';
-import '../../../shared/loading.dart';
+import '../../../../constants/assets.dart';
+import '../../../../shared/loading.dart';
 
 class ViewUserPhoto extends StatefulWidget {
   const ViewUserPhoto({Key? key}) : super(key: key);
@@ -29,15 +31,13 @@ class _ViewUserPhotoState extends State<ViewUserPhoto> {
     return InkWell(
       borderRadius: BorderRadius.circular(22),
       onTap: () {
-        if(pressable)
-          {
-            showModalBottomSheet(
-                context: context, builder: (context) => const ModalWidget());
-             // pressable = false;
+        if (pressable) {
+          showModalBottomSheet(
+              context: context, builder: (context) => const ModalWidget());
+          // pressable = false;
 
-          }
-      }
-      ,
+        }
+      },
       child: Container(
         alignment: Alignment.center,
         width: size.width * 0.7,
@@ -50,13 +50,12 @@ class _ViewUserPhotoState extends State<ViewUserPhoto> {
             return photoCubit;
           },
           child: BlocBuilder<UserCubit, UserState>(builder: (context, state) {
-            if(state is UserError)
-              {
-                WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-                  photoCubit.resetPhoto();
-                  PopMessages.showSnackBar(context, "No Network");
-                });
-              }
+            if (state is UserError) {
+              WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+                photoCubit.resetPhoto();
+                PopMessages.showSnackBar(context, "No Network");
+              });
+            }
             if (state is UserInitialPhoto) {
               pressable = true;
               return getPhoto(state.url);

@@ -1,9 +1,7 @@
-import 'package:chatia/constants/exception_cases.dart';
+import 'package:chatia/shared/validator.dart';
 import 'package:chatia/module_user/bloc/user_cubit.dart';
 import 'package:chatia/module_user/models/user_model.dart';
-import 'package:chatia/module_user/repository/user_repository.dart';
-import 'package:chatia/module_user/ui/sign_in/sign_in_button.dart';
-import 'package:chatia/module_user/ui/sign_up/widgets.dart';
+import 'package:chatia/module_user/ui/sign_in/widget/sign_in_button.dart';
 import 'package:chatia/shared/messages.dart';
 import 'package:flutter/material.dart';
 
@@ -63,9 +61,9 @@ class _SignInPageState extends State<SignInPage> {
               InkWell(
                 borderRadius: BorderRadius.circular(15),
                 onTap: () async {
-                  if (ExceptionCases.checkUsername(email.text)) {
+                  if (Validator.checkUsername(email.text)) {
                     PopMessages.showSnackBar(context, "Invalid Email");
-                  } else if (ExceptionCases.checkPassword(password.text)) {
+                  } else if (Validator.checkPassword(password.text)) {
                     PopMessages.showSnackBar(context, "Invalid Password");
                   } else {
                     userCubit.signIn(User(email.text, password.text));

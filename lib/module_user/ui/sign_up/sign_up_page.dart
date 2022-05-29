@@ -1,7 +1,7 @@
-import 'package:chatia/constants/exception_cases.dart';
+import 'package:chatia/shared/validator.dart';
 import 'package:chatia/module_user/bloc/user_cubit.dart';
 import 'package:chatia/module_user/models/user_model.dart';
-import 'package:chatia/module_user/ui/sign_up/widgets.dart';
+import 'package:chatia/module_user/ui/sign_up/widget/sign_up_button.dart';
 import 'package:chatia/shared/messages.dart';
 
 import 'package:flutter/material.dart';
@@ -86,11 +86,11 @@ class _SignUpPageState extends State<SignUpPage> {
                 child: InkWell(
                   borderRadius: BorderRadius.circular(50),
                   onTap: () {
-                    if (ExceptionCases.checkEmail(email.text) == false) {
+                    if (Validator.checkEmail(email.text) == false) {
                       PopMessages.showSnackBar(context, "Invalid Email");
-                    } else if (ExceptionCases.checkUsername(username.text)) {
+                    } else if (Validator.checkUsername(username.text)) {
                       PopMessages.showSnackBar(context, "Invalid username");
-                    } else if (ExceptionCases.checkPassword(password.text)) {
+                    } else if (Validator.checkPassword(password.text)) {
                       PopMessages.showSnackBar(context, "Invalid password");
                     } else if (password.text != password2.text) {
                       PopMessages.showSnackBar(

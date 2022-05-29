@@ -15,15 +15,14 @@ class UserCubit extends Cubit<UserState> {
   void reset() {
     emit(UserInitial());
   }
-  void resetPhoto()
-  {
+
+  void resetPhoto() {
     emit(UserInitialPhoto(fb.FirebaseAuth.instance.currentUser?.photoURL));
   }
 
   void signUp(User user) async {
     emit(UserLoading());
     String rep = await UserRepository.signUp(user);
-    print(rep);
     if (rep == AppStrings.success) {
       emit(UserDone());
     } else {
@@ -34,7 +33,6 @@ class UserCubit extends Cubit<UserState> {
   void signIn(User user) async {
     emit(UserLoading());
     String rep = await UserRepository.signIn(user);
-    print(rep);
     if (rep == AppStrings.success) {
       emit(UserDone());
     } else {
