@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 ThemeData darkTheme = ThemeData(
-    primaryColor: Colors.blue,
-    primarySwatch: Colors.blue,
+    primaryColor: Colors.redAccent,
+    primarySwatch: Colors.red,
     cardColor: const Color(0xFF232323),
+    useMaterial3: true,
     scaffoldBackgroundColor: const Color(0xFF171717),
     textTheme: const TextTheme(
         bodyText1: TextStyle(
@@ -36,4 +37,14 @@ ThemeData darkTheme = ThemeData(
         iconTheme: IconThemeData(color: Colors.white),
         elevation: 0),
     errorColor: Colors.red,
+    dividerColor: Colors.white,
+    elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(Colors.transparent),
+            foregroundColor: MaterialStateProperty.all(Colors.transparent),
+            elevation: MaterialStateProperty.all(0),
+            overlayColor: MaterialStateProperty.all(Colors.grey[800]),
+            )),
+    switchTheme:
+        SwitchThemeData(thumbColor: MaterialStateProperty.all(Colors.red)),
     canvasColor: Colors.transparent);

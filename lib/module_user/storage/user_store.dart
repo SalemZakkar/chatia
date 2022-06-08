@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class UserStore {
   String settingName = "USERDATA";
   late SharedPreferences sharedPreferences;
+
   Future<bool> init() async {
     sharedPreferences = await SharedPreferences.getInstance();
     return true;

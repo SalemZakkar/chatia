@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 ThemeData defaultTheme = ThemeData(
-    primaryColor: Colors.blue,
-    primarySwatch: Colors.blue,
+    primaryColor: Colors.redAccent,
+    primarySwatch: Colors.red,
+    dividerColor: Colors.grey,
+    useMaterial3: true,
     cardColor: const Color(0xFFEEEEEE),
     scaffoldBackgroundColor: Colors.white,
     textTheme: const TextTheme(
@@ -39,4 +41,13 @@ ThemeData defaultTheme = ThemeData(
         titleTextStyle: TextStyle(color: Colors.black, fontSize: 23),
         elevation: 0),
     errorColor: Colors.red,
+    elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+      backgroundColor: MaterialStateProperty.all(Colors.transparent),
+      foregroundColor: MaterialStateProperty.all(Colors.transparent),
+      elevation: MaterialStateProperty.all(0),
+      overlayColor: MaterialStateProperty.all(Colors.grey[300]),
+    )),
+    switchTheme:
+        SwitchThemeData(thumbColor: MaterialStateProperty.all(Colors.red)),
     canvasColor: Colors.transparent);

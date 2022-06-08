@@ -19,6 +19,9 @@ class UserRepository {
       userStore.setUser(user);
       return AppStrings.success;
     } catch (e) {
+      if (e is FirebaseException) {
+        return e.code;
+      }
       FirebaseAuthException firebaseAuthException = e as FirebaseAuthException;
       return firebaseAuthException.code;
     }
@@ -73,6 +76,35 @@ class UserRepository {
     } catch (e) {
       FirebaseAuthException ee = e as FirebaseAuthException;
       return ee.code;
+    }
+  }
+
+  static Future<bool> logOut({required bool fullLogout}) async {
+    Messages.logOut(AppStrings.inProgress);
+    try {
+      await UserApi.logOut(fullLogout);
+      if (fullLogout) {
+        UserStore userStore = UserStore();
+        await FirebaseAuth.instance.signOut();
+        await userStore.init();
+        userStore.clearUser();
+      }
+      Messages.logOut(AppStrings.success);
+      return true;
+    } catch (e) {
+      Messages.logOut(AppStrings.error);
+      return false;
+    }
+  }
+
+  static Future setOnline() async {
+    Map<String, dynamic> m = {"lastSeen": DateTime.now(), "online": true};
+    Messages.setUserData(m, "FireBase", 0);
+    try {
+      await UserApi.setOnline();
+      Messages.setUserData(m, "FireBase", 1);
+    } catch (e) {
+      Messages.setUserData(m, "FireBase", 0, error: e.toString());
     }
   }
 }

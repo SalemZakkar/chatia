@@ -57,5 +57,7 @@ Future<bool> initService() async {
   await Firebase.initializeApp();
   await themeStorage.init();
   firstRoute = await AppRouter.firstRoute();
+  // await BackgroundService.startService();
+
   return true;
 }

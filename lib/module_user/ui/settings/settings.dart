@@ -1,8 +1,10 @@
 import 'package:chatia/app_router.dart';
-import 'package:chatia/module_user/bloc/user_cubit.dart';
-import 'package:chatia/module_user/storage/user_store.dart';
+import 'package:chatia/module_user/bloc/cubit/user_cubit.dart';
+import 'package:chatia/module_user/repository/user_repository.dart';
+import 'package:chatia/module_user/ui/settings/loading.dart';
 import 'package:chatia/module_user/ui/settings/widgets/dark_mode_switch.dart';
 import 'package:chatia/module_user/ui/settings/widgets/view_photo.dart';
+import 'package:chatia/shared/messages.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -42,7 +44,7 @@ class _SettingsPageState extends State<SettingsPage> {
               Container(
                   alignment: Alignment.center,
                   width: MediaQuery.of(context).size.width,
-                  height: 280,
+                  height: 250,
                   child: const ViewUserPhoto()),
               const SizedBox(
                 height: 30,
@@ -88,12 +90,17 @@ class _SettingsPageState extends State<SettingsPage> {
               InkWell(
                 borderRadius: BorderRadius.circular(15),
                 onTap: () async {
-                  UserStore userStore = UserStore();
-                  await userStore.init();
-                  userStore.clearUser();
-                  FirebaseAuth.instance.signOut();
-                  Navigator.pushNamedAndRemoveUntil(
-                      context, AppRouter.welcome, (route) => false);
+                  showDialog(
+                      context: context,
+                      builder: (context) => const SettingsLoading(),
+                      barrierDismissible: false);
+                  if (await UserRepository.logOut(fullLogout: true)) {
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, AppRouter.welcome, (route) => false);
+                  } else {
+                    PopMessages.showSnackBar(context, "No Network Connection");
+                    Navigator.pop(context);
+                  }
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width,

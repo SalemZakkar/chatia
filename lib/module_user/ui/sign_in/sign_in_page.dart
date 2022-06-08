@@ -1,8 +1,8 @@
-import 'package:chatia/shared/validator.dart';
-import 'package:chatia/module_user/bloc/user_cubit.dart';
+import 'package:chatia/module_user/bloc/cubit/user_cubit.dart';
 import 'package:chatia/module_user/models/user_model.dart';
 import 'package:chatia/module_user/ui/sign_in/widget/sign_in_button.dart';
 import 'package:chatia/shared/messages.dart';
+import 'package:chatia/shared/validator.dart';
 import 'package:flutter/material.dart';
 
 class SignInPage extends StatefulWidget {
@@ -15,6 +15,7 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

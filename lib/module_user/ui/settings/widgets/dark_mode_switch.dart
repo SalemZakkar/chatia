@@ -11,6 +11,7 @@ class ThemeSwitchWidget extends StatefulWidget {
 
 class _ThemeSwitchWidgetState extends State<ThemeSwitchWidget> {
   bool isDark = ThemeManager.getTheme() == 1;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

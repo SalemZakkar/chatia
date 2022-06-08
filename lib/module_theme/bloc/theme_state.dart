@@ -7,5 +7,6 @@ class ThemeInitial extends ThemeState {}
 
 class ThemeChanged extends ThemeState {
   final int i;
+
   ThemeChanged(this.i);
 }

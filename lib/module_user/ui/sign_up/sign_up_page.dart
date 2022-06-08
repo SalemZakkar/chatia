@@ -1,9 +1,8 @@
-import 'package:chatia/shared/validator.dart';
-import 'package:chatia/module_user/bloc/user_cubit.dart';
+import 'package:chatia/module_user/bloc/cubit/user_cubit.dart';
 import 'package:chatia/module_user/models/user_model.dart';
 import 'package:chatia/module_user/ui/sign_up/widget/sign_up_button.dart';
 import 'package:chatia/shared/messages.dart';
-
+import 'package:chatia/shared/validator.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -18,6 +17,7 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController password2 = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -98,7 +98,10 @@ class _SignUpPageState extends State<SignUpPage> {
                     } else {
                       userCubit.signUp(
                         User(email.text, password.text,
-                            username: username.text),
+                            username: username.text,
+                            img: null,
+                            lastSeen: DateTime.now(),
+                            online: true),
                       );
                     }
                   },

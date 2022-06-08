@@ -1,8 +1,9 @@
 class AppStrings {
   static String error = "ERROR";
   static String done = "DONE";
+  static String inProgress = "IN-PROGRESS";
   static String baseUrl = "";
-  static String packageName = "com.TheBlackPearL";
+  static String packageName = "com.TheBlackPearL.ChatiaApp";
   static String firebaseEmailWrong = "invalid-email";
   static String fireBaseWrongPassword = "wrong-password";
   static String fireBaseUserNotFound = "user-not-found";

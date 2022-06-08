@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class ThemeStorage {
   static String settingName = "THEME_MODE";
   late SharedPreferences sharedPreferences;
+
   Future<bool> init() async {
     sharedPreferences = await SharedPreferences.getInstance();
     return true;

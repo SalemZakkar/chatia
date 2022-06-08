@@ -42,7 +42,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 width: size.width * 0.5,
                 height: 50,
                 decoration: BoxDecoration(
-                    color: themeData.iconTheme.color,
+                    color: themeData.primaryColor,
                     borderRadius: BorderRadius.circular(50)),
                 alignment: Alignment.center,
                 child: Text(

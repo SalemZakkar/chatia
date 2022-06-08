@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:chatia/module_user/ui/settings/widgets/view_photo.dart';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
@@ -84,7 +85,7 @@ class _ModalWidgetState extends State<ModalWidget> {
 Future<File?> cropImage(File file, ThemeData themeData) async {
   CroppedFile? res = await ImageCropper.platform.cropImage(
       sourcePath: file.path,
-      compressQuality: 50,
+      compressQuality: 20,
       cropStyle: CropStyle.rectangle,
       aspectRatioPresets: [
         CropAspectRatioPreset.square

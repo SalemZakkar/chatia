@@ -6,12 +6,13 @@ import 'package:chatia/module_user/repository/user_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart' as fb;
 import 'package:meta/meta.dart';
 
-import '../models/user_model.dart';
+import '../../models/user_model.dart';
 
 part 'user_state.dart';
 
 class UserCubit extends Cubit<UserState> {
   UserCubit(UserState initialState) : super(initialState);
+
   void reset() {
     emit(UserInitial());
   }

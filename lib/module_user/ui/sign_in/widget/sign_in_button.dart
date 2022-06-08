@@ -1,7 +1,7 @@
 import 'package:chatia/app_router.dart';
-import 'package:chatia/module_user/bloc/user_cubit.dart';
+import 'package:chatia/module_user/bloc/cubit/user_cubit.dart';
 import 'package:chatia/module_user/ui/sign_in/sign_in_page.dart';
-import 'package:chatia/shared/loading.dart';
+import 'package:chatia/shared/widget/loading.dart';
 import 'package:chatia/shared/messages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

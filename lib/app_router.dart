@@ -1,3 +1,4 @@
+import 'package:chatia/module_chats/ui/all_users/all_users_page.dart';
 import 'package:chatia/module_chats/ui/home_page.dart';
 import 'package:chatia/module_user/models/user_model.dart';
 import 'package:chatia/module_user/storage/user_store.dart';
@@ -15,6 +16,8 @@ class AppRouter {
   static const String splash = "/splash";
   static const String home = "/home";
   static const String setting = "/settings";
+  static const String allUsers = "/allUsers";
+
   static Future<String> firstRoute() async {
     UserStore userStore = UserStore();
     await userStore.init();
@@ -37,6 +40,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (context) => const HomePage());
       case setting:
         return MaterialPageRoute(builder: (context) => const SettingsPage());
+      case allUsers:
+        return MaterialPageRoute(builder: (context) => const AllUsersPage());
       default:
         return null;
     }
