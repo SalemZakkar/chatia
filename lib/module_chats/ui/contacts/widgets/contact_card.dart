@@ -1,20 +1,16 @@
 import 'package:chatia/shared/widget/divider.dart';
 import 'package:flutter/material.dart';
 
-import '../../../module_user/models/user_model.dart';
-import '../../../shared/widget/online_status.dart';
-import '../../../shared/widget/profile_image_card.dart';
+import '../../../../shared/widget/profile_image_card.dart';
 
-class UserCard extends StatefulWidget {
-  final User user;
-
-  const UserCard({Key? key, required this.user}) : super(key: key);
+class ContactCard extends StatefulWidget {
+  const ContactCard({Key? key}) : super(key: key);
 
   @override
-  State<UserCard> createState() => _UserCardState();
+  State<ContactCard> createState() => _ContactCardState();
 }
 
-class _UserCardState extends State<UserCard> {
+class _ContactCardState extends State<ContactCard> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -29,7 +25,7 @@ class _UserCardState extends State<UserCard> {
             height: 80,
             child: Row(
               children: [
-                image(widget.user.img, context),
+                image("widget.user.img", context),
                 const SizedBox(
                   width: 30,
                 ),
@@ -38,14 +34,18 @@ class _UserCardState extends State<UserCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      widget.user.username ?? "",
+                      "username",
                       style: themeData.textTheme.subtitle1,
                       textScaleFactor: 1,
                     ),
                     const SizedBox(
                       height: 10,
                     ),
-                    getOnline(widget.user.online ?? false)
+                    const Text(
+                      "Message",
+                      style: TextStyle(color: Colors.grey),
+                      overflow: TextOverflow.ellipsis,
+                    )
                   ],
                 )
               ],
@@ -57,5 +57,3 @@ class _UserCardState extends State<UserCard> {
     );
   }
 }
-
-

@@ -21,13 +21,14 @@ class _AllUsersPageState extends State<AllUsersPage> {
       appBar: AppBar(
         title: const Text("All Users"),
         centerTitle: false,
+        toolbarHeight: 80,
       ),
       body: Container(
         constraints: const BoxConstraints.expand(),
         alignment: Alignment.center,
-     //   padding: const EdgeInsets.all(20),
+        //   padding: const EdgeInsets.all(20),
         child: StreamBuilder<QuerySnapshot>(
-            stream: ChatRepo.openUsersStream(),
+            stream: ChatRepo.getUsersStream(),
             builder: (context, snapshot) {
               if (snapshot.hasError ||
                   snapshot.connectionState == ConnectionState.none) {

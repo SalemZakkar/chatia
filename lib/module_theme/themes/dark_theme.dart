@@ -40,11 +40,11 @@ ThemeData darkTheme = ThemeData(
     dividerColor: Colors.white,
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.transparent),
-            foregroundColor: MaterialStateProperty.all(Colors.transparent),
-            elevation: MaterialStateProperty.all(0),
-            overlayColor: MaterialStateProperty.all(Colors.grey[800]),
-            )),
+      backgroundColor: MaterialStateProperty.all(Colors.transparent),
+      foregroundColor: MaterialStateProperty.all(Colors.transparent),
+      elevation: MaterialStateProperty.all(0),
+      overlayColor: MaterialStateProperty.all(Colors.grey[800]),
+    )),
     switchTheme:
         SwitchThemeData(thumbColor: MaterialStateProperty.all(Colors.red)),
     canvasColor: Colors.transparent);

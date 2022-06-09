@@ -1,11 +1,10 @@
 import 'package:chatia/module_chats/ui/all_users/all_users_page.dart';
-import 'package:chatia/module_chats/ui/home_page.dart';
+import 'package:chatia/module_chats/ui/home/home_page.dart';
 import 'package:chatia/module_user/models/user_model.dart';
 import 'package:chatia/module_user/storage/user_store.dart';
-import 'package:chatia/module_user/ui/settings/settings.dart';
+import 'package:chatia/module_user/ui/settings/settings_page.dart';
 import 'package:chatia/module_user/ui/sign_in/sign_in_page.dart';
 import 'package:chatia/module_user/ui/sign_up/sign_up_page.dart';
-import 'package:chatia/splash.dart';
 import 'package:chatia/welcome_page.dart';
 import 'package:flutter/material.dart';
 
@@ -34,8 +33,6 @@ class AppRouter {
         return MaterialPageRoute(builder: (context) => const SignUpPage());
       case signIn:
         return MaterialPageRoute(builder: (context) => const SignInPage());
-      case splash:
-        return MaterialPageRoute(builder: (context) => const Splash());
       case home:
         return MaterialPageRoute(builder: (context) => const HomePage());
       case setting:

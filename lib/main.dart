@@ -1,3 +1,4 @@
+
 import 'package:chatia/app_router.dart';
 import 'package:chatia/module_theme/bloc/theme_cubit.dart';
 import 'package:chatia/module_theme/model/app_themes.dart';
@@ -57,7 +58,5 @@ Future<bool> initService() async {
   await Firebase.initializeApp();
   await themeStorage.init();
   firstRoute = await AppRouter.firstRoute();
-  // await BackgroundService.startService();
-
   return true;
 }

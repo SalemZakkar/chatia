@@ -1,8 +1,8 @@
 import 'package:chatia/module_user/bloc/cubit/user_cubit.dart';
 import 'package:chatia/module_user/models/user_model.dart';
 import 'package:chatia/module_user/ui/sign_up/widget/sign_up_button.dart';
-import 'package:chatia/shared/messages.dart';
 import 'package:chatia/shared/validator.dart';
+import 'package:chatia/shared/widget/messages.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {

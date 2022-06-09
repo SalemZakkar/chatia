@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class DividerWidget extends StatelessWidget {
   final double? width;
   final Color? dividerColor;
+
   const DividerWidget({Key? key, this.width, this.dividerColor})
       : super(key: key);
 

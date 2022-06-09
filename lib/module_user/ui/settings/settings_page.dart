@@ -1,10 +1,10 @@
 import 'package:chatia/app_router.dart';
 import 'package:chatia/module_user/bloc/cubit/user_cubit.dart';
 import 'package:chatia/module_user/repository/user_repository.dart';
-import 'package:chatia/module_user/ui/settings/loading.dart';
 import 'package:chatia/module_user/ui/settings/widgets/dark_mode_switch.dart';
+import 'package:chatia/module_user/ui/settings/widgets/loading.dart';
 import 'package:chatia/module_user/ui/settings/widgets/view_photo.dart';
-import 'package:chatia/shared/messages.dart';
+import 'package:chatia/shared/widget/messages.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 

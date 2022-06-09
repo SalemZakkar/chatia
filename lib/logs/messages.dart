@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:chatia/constants/app_string.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -10,6 +12,17 @@ class Messages {
 
   static void getData(String text) {
     debugPrint("Trying To Get Data --> ( " + text + " )");
+  }
+
+  static void getDataNormal(String text) {
+    log("Get Data -----> " + text);
+    log("-----------------------------------------------------------------");
+  }
+
+  static void execCodeInBackground(String service, int? i) {
+    debugPrint("Exec Service " + service + " -----> " + progress[i ?? 0]);
+    debugPrint(
+        "-----------------------------------------------------------------");
   }
 
   static void errorGetData(String text, String error) {

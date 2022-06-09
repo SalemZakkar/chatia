@@ -4,7 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:chatia/module_user/bloc/cubit/user_cubit.dart';
 import 'package:chatia/module_user/ui/settings/widgets/modal_widget.dart';
 import 'package:chatia/shared/widget/error_network.dart';
-import 'package:chatia/shared/messages.dart';
+import 'package:chatia/shared/widget/messages.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,7 +45,7 @@ class _ViewUserPhotoState extends State<ViewUserPhoto> {
       },
       child: Container(
         alignment: Alignment.center,
-        width: size.width*0.5,
+        width: size.width * 0.5,
         height: 200,
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(250)),
         child: BlocProvider<UserCubit>(

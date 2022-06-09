@@ -92,13 +92,13 @@ class UserRepository {
       Messages.logOut(AppStrings.success);
       return true;
     } catch (e) {
-      Messages.logOut(AppStrings.error);
+      Messages.logOut(e.toString());
       return false;
     }
   }
 
   static Future setOnline() async {
-    Map<String, dynamic> m = {"lastSeen": DateTime.now(), "online": true};
+    Map<String, dynamic> m = { "online": true};
     Messages.setUserData(m, "FireBase", 0);
     try {
       await UserApi.setOnline();
